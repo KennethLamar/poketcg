@@ -7886,18 +7886,17 @@ _TossCoin::
 
 .asm_723c
 	call ResetAnimationQueue
+	ld a, [wWhoseTurn]
+	cp $c2 ; Check if it is the player's turn.
+	jr z, .toss_heads ; If it is the player's turn, always toss heads.
+	ccf ; Clear carry
 	ld d, DUEL_ANIM_COIN_TOSS2
 	ld e, $0 ; tails
-	call UpdateRNGSources
-	ld a, [wWhoseTurn]
-	cp $c3
-	jr z, .clear_carry
+	jp .got_result
+.toss_heads:
 	scf ; Set carry
-.clear_carry:
-	ccf ; Clear carry
-	jr c, .got_result
 	ld d, DUEL_ANIM_COIN_TOSS1
-	ld e, $1 ; heads
+	ld e, $1 ; heads 
 
 .got_result
 ; already decided on coin toss result,
