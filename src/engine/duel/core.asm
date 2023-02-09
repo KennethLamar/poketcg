@@ -7889,7 +7889,12 @@ _TossCoin::
 	ld d, DUEL_ANIM_COIN_TOSS2
 	ld e, $0 ; tails
 	call UpdateRNGSources
-	rra
+	ld a, [wWhoseTurn]
+	cp $c3
+	jr z, .clear_carry
+	scf ; Set carry
+.clear_carry:
+	ccf ; Clear carry
 	jr c, .got_result
 	ld d, DUEL_ANIM_COIN_TOSS1
 	ld e, $1 ; heads

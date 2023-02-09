@@ -1,3 +1,9 @@
+# Modification
+
+This decomp has been modified to build a version of the game that always gives coin flips in your favor.
+More specifically, you always get heads while the AI will always get tails.
+Checksum validation has been disabled to permit this modified build to complete.
+
 # Pokémon TCG [![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon TCG.
