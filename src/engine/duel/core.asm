@@ -7889,12 +7889,10 @@ _TossCoin::
 	ld a, [wWhoseTurn]
 	cp $c2 ; Check if it is the player's turn.
 	jr z, .toss_heads ; If it is the player's turn, always toss heads.
-	ccf ; Clear carry
 	ld d, DUEL_ANIM_COIN_TOSS2
 	ld e, $0 ; tails
 	jp .got_result
 .toss_heads:
-	scf ; Set carry
 	ld d, DUEL_ANIM_COIN_TOSS1
 	ld e, $1 ; heads 
 
